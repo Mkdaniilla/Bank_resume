@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Банк резюме LegalTech | Платформа талантов</title>
+    <meta name="description" content="Единый реестр и каталог специалистов в сфере LegalTech, IP/IT права и юридической автоматизации.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">LT</span>
+                <span class="logo-text">LegalTech<span>Bank</span></span>
+            </a>
+            <nav class="nav">
+                <a href="#about">О проекте</a>
+                <a href="#catalog">Каталог</a>
+                <a href="#employers">Работодателям</a>
+            </nav>
+            <div class="nav-cta">
+                <button class="btn btn-outline" onclick="openModal()">Добавить резюме</button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="badge">Будущее юридической профессии</span>
+                    <h1>Где экспертиза встречается <br>с <span>инновациями</span></h1>
+                    <p>Единый банк талантов LegalTech. Показываем не сухие строки из CV, а реальные проекты, кейсы и стек лучших специалистов рынка.</p>
+                    <div class="hero-btns">
+                        <a href="#catalog" class="btn btn-primary">Найти специалиста</a>
+                        <button class="btn btn-secondary" onclick="openModal()">Разместить резюме</button>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-bg-blobs"></div>
+        </section>
+
+        <section id="catalog" class="catalog section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Каталог специалистов</h2>
+                    <p>Используйте фильтры, чтобы найти эксперта под вашу задачу</p>
+                </div>
+
+                <div class="filters-wrapper">
+                    <div class="filters" id="specializationFilters">
+                        <button class="filter-btn active" data-filter="all">Все</button>
+                        <button class="filter-btn" data-filter="LegalTech">LegalTech</button>
+                        <button class="filter-btn" data-filter="IP/IT Law">IP/IT Law</button>
+                        <button class="filter-btn" data-filter="LegalOps">LegalOps</button>
+                        <button class="filter-btn" data-filter="Legal Design">Legal Design</button>
+                        <button class="filter-btn" data-filter="Privacy">Privacy</button>
+                        <button class="filter-btn" data-filter="Automation">Automation</button>
+                    </div>
+                </div>
+
+                <div class="specialists-grid" id="specialistsGrid">
+                    <!-- Карточки будут добавлены через JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="employers" class="cta-section section">
+            <div class="container">
+                <div class="cta-card">
+                    <h2>Ищете таланты для развития LegalTech?</h2>
+                    <p>Получите доступ к базе специалистов, готовых к вызовам цифровой трансформации.</p>
+                    <div class="cta-actions">
+                        <a href="mailto:hire@legaltechbank.ru" class="btn btn-light">Связаться с нами</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 LegalTech Bank. База данных обновляется в реальном времени.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Resume Modal -->
+    <div id="resumeModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i data-lucide="x"></i>
+            </button>
+            <div class="modal-header">
+                <h2>Разместить свой профиль</h2>
+                <p>Заполните форму, и вы сразу появитесь в каталоге.</p>
+            </div>
+            <form id="resumeForm" class="form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Имя и Фамилия</label>
+                        <input type="text" id="formName" placeholder="Иван Иванов" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Роль</label>
+                        <input type="text" id="formRole" placeholder="Legal Operations Specialist" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Категория</label>
+                    <select id="formCategory" required>
+                        <option value="LegalTech">LegalTech</option>
+                        <option value="IP/IT Law">IP/IT Law</option>
+                        <option value="LegalOps">LegalOps</option>
+                        <option value="Legal Design">Legal Design</option>
+                        <option value="Privacy">Privacy</option>
+                        <option value="Automation">Automation</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>О себе</label>
+                    <textarea id="formDesc" rows="3" placeholder="Краткое описание вашей экспертизы..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Навыки (через запятую)</label>
+                    <input type="text" id="formSkills" placeholder="Python, DocuSign, Figma...">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Telegram (без @)</label>
+                        <input type="text" id="formContact" placeholder="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ключевой кейс/проект</label>
+                        <input type="text" id="formProjects" placeholder="Внедрение CLM в банке">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Добавить в базу</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
