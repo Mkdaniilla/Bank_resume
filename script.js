@@ -72,7 +72,7 @@ function renderSpecialists(data) {
             
             <div class="card-links">
                 ${spec.case_link ? `<a href="${spec.case_link}" target="_blank" class="card-link"><i data-lucide="external-link" size="14"></i> Кейс/Проект</a>` : ''}
-                ${spec.resume_link ? `<a href="${spec.resume_link}" target="_blank" class="card-link"><i data-lucide="file-text" size="14"></i> Резюме/LI</a>` : ''}
+                ${spec.resume_link ? `<a href="${spec.resume_link}" target="_blank" class="card-link"><i data-lucide="file-text" size="14"></i> Резюме</a>` : ''}
             </div>
 
             <div class="card-footer">
