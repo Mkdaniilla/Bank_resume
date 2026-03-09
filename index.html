@@ -68,6 +68,7 @@
                         <button class="filter-btn" data-filter="Legal Design">Legal Design</button>
                         <button class="filter-btn" data-filter="Privacy">Privacy</button>
                         <button class="filter-btn" data-filter="Automation">Automation</button>
+                        <button class="filter-btn" data-filter="Other">Другое</button>
                     </div>
                 </div>
 
@@ -110,15 +111,8 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Категория</label>
-                    <select id="formCategory" required>
-                        <option value="LegalTech">LegalTech</option>
-                        <option value="IP/IT Law">IP/IT Law</option>
-                        <option value="LegalOps">LegalOps</option>
-                        <option value="Legal Design">Legal Design</option>
-                        <option value="Privacy">Privacy</option>
-                        <option value="Automation">Automation</option>
-                    </select>
+                    <label>Категории (через запятую)</label>
+                    <input type="text" id="formCategory" placeholder="LegalTech, LegalOps, Automation" required>
                 </div>
                 <div class="form-group">
                     <label>О себе</label>
@@ -134,10 +128,21 @@
                         <input type="text" id="formContact" placeholder="username" required>
                     </div>
                     <div class="form-group">
-                        <label>Ключевой кейс/проект</label>
-                        <input type="text" id="formProjects" placeholder="Внедрение CLM в банке">
+                        <label>Ключевые проекты</label>
+                        <input type="text" id="formProjects" placeholder="Внедрение CLM, автоматизация исков...">
                     </div>
                 </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ссылка на кейс/портфолио (URL)</label>
+                        <input type="url" id="formCaseLink" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label>Ссылка на резюме/LinkedIn (URL)</label>
+                        <input type="url" id="formResumeLink" placeholder="https://...">
+                    </div>
+                </div>
+                <input type="hidden" id="editId">
                 <button type="submit" class="btn btn-primary btn-full" id="submitBtn">Добавить в базу</button>
             </form>
         </div>
